@@ -111,8 +111,8 @@ The **TDC** has successfully passed validation for the following protocols:
 - **Version Tested:** [DSP 2025-1](https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/2025-1/)
 - **Validation Mechanism:** [DSP TCK 1.0.0-RC5](https://github.com/eclipse-dataspacetck/dsp-tck/releases/tag/v1.0.0-RC5)
 - **Validation Status:** ✅ Passed 65/65 tests
-- **Configuration:** `/tck/2025-1/configuration/`  
-- **Results:** `/tck/2025-1/logs/`  
+- **Configuration:** [`/tck/2025-1/configuration/`](./tck/2025-1/configuration/)   
+- **Results:** [`/tck/2025-1/logs/`](./tck/2025-1/logs/)   
 
 As a result, the TDC correctly implements the DSP requirements defined by the **Eclipse Dataspace Working Group**, guaranteeing compliance and interoperability with other compliant connectors.
 
