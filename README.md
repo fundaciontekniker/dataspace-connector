@@ -1,5 +1,7 @@
 <h1>Tekniker Dataspace Connector</h3>
 
+![CC BY-NC-ND](./tck/2025-1/pictures/TDC_DSP_TCK_Catalog.png)
+
 # Table of contents
 1. [📋 Introduction](#introduction)
 2. [📦 Project Structure](#project-structure)
@@ -12,11 +14,21 @@
 
 # 1. 📋 Introduction <a name="introduction"></a>
 
-The **Tekniker Dataspace Connector (TDC)**, considered as a **Participant Agent** as defined in the **[DSSC Blueprint 2.0](https://dssc.eu/space/BVE2/1071251457/)**,  is a reference tool published in the **[DSSC Toolbox](https://toolbox.dssc.eu/)** that, following widely accepted standards, aims to enable companies to participate in a Data Space by providing functionalities to publish and search for a Catalog of Datasets, negotiate usage Agreements and transfer agreed Datasests based on three main pilars:
+The **Tekniker Dataspace Connector (TDC)**, acting as a **Participant Agent** as defined in the **[DSSC Blueprint 2.0](https://dssc.eu/space/BVE2/1071251457/)**,  is a reference tool, published in the **[DSSC Toolbox](https://toolbox.dssc.eu/)** and the **[Data Space Connector Report](https://internationaldataspaces.org/idsa-data-space-connector-report/)**, designed to enable companies to efficiently operate within data spaces. 
+
+Built in accordance with European standards such as the Dataspace Protocol (DSP), it adopts a two-fold approach to ensure data spaces three main pilars, while providing flexibility and scalability. These pillars are:
 
 1. **[Interoperability](#interoperability)**
 2. **[Trust](#trust)**
 3. **[Data Sovereignty](#soverignty)**
+
+In particular, addressing real operational challenges, the connector offers core functionalities to:
+
+- **Publish and discover** large volumes of **datasets** using expressive vocabularies. 
+- **Negotiate usage policies** both manually and automatically. 
+- **Transfer** diverse types of **data** from multiple data sources. 
+
+It is important to mention that the TDC also includes a user-friendly interface designed for non-technical users to easily manage offered and requested datasets, requested contract negotiations, resulting policies, and ongoing data transfers without deep technical knowledge. This usability is a key aspect for promoting the adoption of data spaces fostering open, collaborative, and trusted ecosystems.
 
 ## 1.1. Interoperability <a name="interoperability"></a>
  
