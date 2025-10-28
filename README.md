@@ -7,14 +7,15 @@
 2. [📦 Project Structure](#project-structure)
 3. [🔧 Requirements](#requirements)
 4. [🧱 Architecture](#architecture)
-5. [🚀 Deployment](#deployment)
-6. [📃 License](#license) 
-7. [🛠️ Support](#support)
+5. [🧩 Compliance](#compliance)
+6. [🚀 Deployment](#deployment)
+7. [📃 License](#license) 
+8. [🛠️ Support](#support)
 
 
 # 1. 📋 Introduction <a name="introduction"></a>
 
-The **Tekniker Dataspace Connector (TDC)**, acting as a **Participant Agent** as defined in the **[DSSC Blueprint 2.0](https://dssc.eu/space/BVE2/1071251457/)**,  is a reference tool, published in the **[DSSC Toolbox](https://toolbox.dssc.eu/)** and the **[Data Space Connector Report](https://internationaldataspaces.org/idsa-data-space-connector-report/)**, designed to enable companies to efficiently operate within data spaces. 
+The **Tekniker Dataspace Connector (TDC)**, acting as a **Participant Agent** as defined in the **[DSSC Blueprint 2.0](https://dssc.eu/space/BVE2/1071251457/)**,  is a reference tool, published in the **[DSSC Toolbox](https://toolbox.dssc.eu/)** and the **[IDSA Data Space Connector Report](https://internationaldataspaces.org/idsa-data-space-connector-report/)**, designed to enable companies to efficiently operate within data spaces. 
 
 Built in accordance with European standards such as the Dataspace Protocol (DSP), it adopts a two-fold approach to ensure data spaces three main pilars, while providing flexibility and scalability. These pillars are:
 
@@ -24,11 +25,11 @@ Built in accordance with European standards such as the Dataspace Protocol (DSP)
 
 In particular, addressing real operational challenges, the connector offers core functionalities to:
 
-- **Publish and discover** large volumes of **datasets** using expressive vocabularies. 
-- **Negotiate usage policies** both manually and automatically. 
-- **Transfer** diverse types of **data** from multiple data sources. 
+- **Publish and discover** large volumes of **Datasets** using expressive vocabularies. 
+- **Negotiate usage Agreements** both manually and automatically. 
+- **Transfer** diverse types of **Datasets** from multiple data sources. 
 
-It is important to mention that the TDC also includes a user-friendly interface designed for non-technical users to easily manage offered and requested datasets, requested contract negotiations, resulting policies, and ongoing data transfers without deep technical knowledge. This usability is a key aspect for promoting the adoption of data spaces fostering open, collaborative, and trusted ecosystems.
+The TDC also includes a user-friendly interface designed for non-technical users to easily manage offered and requested datasets, requested contract negotiations, resulting policies, and ongoing data transfers without deep technical knowledge. This usability is a key aspect for promoting the adoption of data spaces fostering open, collaborative, and trusted ecosystems.
 
 ## 1.1. Interoperability <a name="interoperability"></a>
  
@@ -45,7 +46,7 @@ The TDC ensures seamless data sharing following a two-fold approach. As represen
   - **Contract Negotiation Protocol**: it is a set of protocols and schemas to negotiate usage Agreements for specific Datasets within a Catalog.
   - **Transfer Process Protocol**: it is a set of protocols and schemas to access agreed Datasets.
 
-- **Data Plane**: it transfers data from different **HTTP APIs** and considering the following Data Types: **Text Plain, JSON, XML, Binary, PDF.**
+- **Data Plane**: it transfers data from/to different **HTTP APIs** and considering the following Data Types: **Text Plain, JSON, XML, Binary, PDF.**
 
 ## 1.2. Trust <a name="trust"></a>
 
@@ -54,11 +55,11 @@ The TDC grants trusted data transactions by supporting the following two **Feder
 - **Centralized Identities**: a central entity in the role of the Identity Provider issues, holds and manages identities. Following this approach, the following standards are supported:
     - **[OpenID Connect](https://auth0.com/docs/authenticate/protocols/openid-connect-protocol)**: built on top of the **OAuth 2.0**, it allows Dataspace Connectors to verify the identity of a target Dataspace Connector and to obtain basic user profile information based on **JSON web tokens (JWTs)**, which can obtained using flows conforming to the OAuth 2.0 specifications. 
 - **Decentralized Identities**: a central entity in the role of the Identity Provider issues identities and the Dataspace Connector holds and self-manages them. Following this approach, the followig standards  are supported:  
-  - **[Decentralized Claims Protocol](https://projects.eclipse.org/projects/technology.dataspace-dcp)**: it is a set of protocols and schemas based on OpenID4VC to issue and present identities based on **[Verifiable Credentials v1.1](https://www.w3.org/TR/vc-data-model/)** and **[Decentralized Identifiers v1.0](https://www.w3.org/TR/did-core/)** W3C Specifications. 
+  - **[Decentralized Claims Protocol](https://projects.eclipse.org/projects/technology.dataspace-dcp)**: it is a set of protocols and schemas based on OpenID4VC to issue and present identities based on **[Verifiable Credentials v2.0](https://www.w3.org/TR/vc-data-model-2.0/)** and **[Decentralized Identifiers v1.0](https://www.w3.org/TR/did-core/)** W3C Specifications. 
 
 ## 1.3. Data Sovereignty <a name="soverignty"></a>
 
-The TDC ensures data sovereignty through the implementation of a Policy Engine, which enforces agreed usage policies for specific Datasets.
+The TDC ensures data sovereignty through the implementation of a Policy Engine, which enforces agreed usage policies for specific Datasets during data sharing through the corresponding Data Planes.
 
 # 2. 📦 Project Structure <a name="project-structure"></a>
 
@@ -66,9 +67,10 @@ This repository includes all the files needed to deploy the TDC with Docker:
 
 - `nginx/`: Reverse proxy configuration.
 - `pictures/`: Illustrative TDC diagrams.
-- `README.md`: This documentation.
 - `docker-compose.yml`: Orchestration file for Docker containers.
 - `tdc.env`: Environment variables file.
+- `tck/`: DSP TCK configuration and results.
+- `README.md`: This documentation.
 
 # 3. 🔧 Requirements <a name="requirements"></a>
 
@@ -90,24 +92,40 @@ The following diagram illustrates the architecture of the TDC and all the Docker
   - **Nginx:** Reverse proxy that routes external HTTP/HTTPS traffic to internal services, except for PostgreSQL, which remains inaccessible externally.
   - **TDC UI:** Web-based user tool for administrators to interact with and manage the TDC.
   - **Swagger UI:** Web-based developer tool for testing and exploring the TDC’s REST APIs.
-  - **TDC:** Main services responsible for offering and requesting datasets within a data space, compliant with the Dataspace Protocol.
-    - **Metadata Manager:** Manages metadata related to available datasets.
-    - **Dataspace Protocol:** Handles catalog publication, contract negotiation, and dataset access.
-    - **Data Plane:** Transfers data from data sources (HTTP APIs) in different formats (text/plain, application/json, application/xml, application/octet-stream and application/pdf) following a PULL and PUSH approach (HTTP APIs).
+  - **TDC:** Main services responsible for offering and requesting Datasets within a data space, compliant with the Dataspace Protocol.
+    - **Metadata Manager:** Manages metadata related to available Datasets.
+    - **Dataspace Protocol:** Handles Catalogs, Contract Negotiations, and Transfer Processes
+    - **Data Plane:** Transfers data from/to data sources (HTTP APIs) in different formats (text/plain, application/json, application/xml, application/octet-stream and application/pdf) following a PULL and PUSH approach (HTTP APIs).
   - **PostgreSQL:** Relational database used by the TDC to manage dataset metadata.
-  - **pgAdmin:** Web-based developer tool for monitoring and managing the PostgreSQL database.
+  - **PgAdmin:** Web-based developer tool for monitoring and managing the PostgreSQL database.
   - **Dozzle:** Web-based developer tool to monitor in real-time all running Docker containers.
 
-# 5. 🚀 Deployment <a name="deployment"></a>
+## 5. 🧩 Compliance <a name="compliance"></a>
+
+The **TDC** has successfully passed validation for the following protocols:
+
+ - **5.1 Dataspace Protocol**
+
+ ### 5.1 Dataspace Protocol
+
+- **Version Tested:** [DSP 2025-1](https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/2025-1/)
+- **Validation Mechanism:** [DSP TCK 1.0.0-RC5](https://github.com/eclipse-dataspacetck/dsp-tck/releases/tag/v1.0.0-RC5)
+- **Validation Status:** ✅ Passed 65/65 tests
+- **Configuration:** `/tck/2025-1/configuration/`  
+- **Results:** `/tck/2025-1/logs/`  
+
+As a result, the TDC correctly implements the DSP requirements defined by the **Eclipse Dataspace Working Group**, guaranteeing compliance and interoperability with other compliant connectors.
+
+# 6. 🚀 Deployment <a name="deployment"></a>
 
 This section explains how to configure and deploy the TDC using Docker. It is divided into the following parts:
 
-  - **5.1 🐳 Docker Images:** Where to find and how to pull the Docker images used in the deployment.
-  - **5.2 🔧 Configuration:** Files and parameters that need to be customized before deploying.
-  - **5.3 🚀 Deployment Steps:** Commands to start the Docker containers.
-  - **5.4 🌐 Accessing Services:** Paths to each service available after deployment.
+  - **6.1 🐳 Docker Images:** Where to find and how to pull the Docker images used in the deployment.
+  - **6.2 🔧 Configuration:** Files and parameters that need to be customized before deploying.
+  - **6.3 🚀 Deployment Steps:** Commands to start the Docker containers.
+  - **6.4 🌐 Accessing Services:** Paths to each service available after deployment.
 
-## 5.1  🐳 Docker Images
+## 6.1  🐳 Docker Images
 
 Most of the Docker images used in the deployment are publicly available and will be automatically downloaded when running `docker compose`, but not all of them.
 
@@ -147,7 +165,7 @@ If your virtual machine requires `sudo` to execute `docker compose` commands, ma
 
 Failing to do so may result in an **Unauthorized** error when pulling images from a registry.
 
-## 5.2 🔧 Configuration
+## 6.2 🔧 Configuration
 
 This section describes the main configuration steps for deploying the TDC environment. 
 
@@ -178,7 +196,6 @@ ports:
 
 ```yaml
 server {
-		
         listen 443 ssl;
         server_name **DNS_SERVER**; # <-- Replace with the domain name 
 
@@ -203,7 +220,7 @@ The deployment of the different services that compose the TDC can be configured 
 |------------------------------|--------------------------------------------------------------------------------|------------------|
 | PARTICIPANT_ID               | ID of the Data Space Participant                                               | tdc              |
 | HOSTNAME                     | Domain Name or IP where the TDC backend is deployed                            | localhost        |
-| BASE_PATH                    | Base path where the TDC backend will be available                              |                  |          
+| BASE_PATH                    | Base path where the TDC backend will be available                              |    /              |          
 | METADATA_MANAGER_PROTOCOL    | Communication protocol on which the Metadata Manager backend is available      | http             |
 | METADATA_MANAGER_HOSTNAME    | Domain name or IP where the Metadata Manager backend is available              | {{HOSTNAME}}     |
 | METADATA_MANAGER_PORT        | Port where the Metadata Manager backend is exposed                             | 80               |
@@ -245,7 +262,7 @@ The deployment of the different services that compose the TDC can be configured 
 |------------------------------|----------------------------------------------------------------------------|------------------------------------------------------|
 | DOZZLE_BASE                  | Base path where the Dozzle frontend will be available                  | /tdc/dozzle                                              |
 
-## 5.3 🚀 Deployment Steps
+## 6.3 🚀 Deployment Steps
 
 Once configured, to deploy the TDC, the ```tdc-network``` must be created. To do so:
 
@@ -272,13 +289,13 @@ Be sure that the `tdc/pgadmin` folder has full permissions.  If not, execute the
 chmod 777 pgadmin
 ```
 
-## 5.4 🌐 Accessing Services 
+## 6.4 🌐 Accessing Services 
 
 Once the services are up and running, they will be available at the following endpoints:
 
 | Service               | Endpoint                                      |
 |-----------------------|-----------------------------------------------|
-| TDC UI                | `<protocol>://<hostname>:<port>/connector-ui`     |
+| TDC UI                | `<protocol>://<hostname>:<port>/tdc/ui`     |
 | TDC                   | - Metadata Manager: `<protocol>://<hostname>:<port>/api/management/v1`<br>- Dataspace Protocol: `<protocol>://<hostname>:<port>/api/dsp/v1`<br>- Data Plane: `<protocol>://<hostname>:<port>/api/data-plane/v1` |
 | TDC Swagger UI        | `<protocol>://<hostname>:<port>/tdc/swagger-ui`   | 
 | PgAdmin               | `<protocol>://<hostname>:<port>/tdc/pgadmin`      | 
@@ -289,7 +306,7 @@ Replace the following parameters:
   - `<hostname>` with the actual host name or IP of your server.
   - `<port>` with the actual port of your server.
 
-## 6. 📃 License  <a name="license"></a>
+## 7. 📃 License  <a name="license"></a>
 
 ![CC BY-NC-ND](./pictures/by-nc-nd.png)
 
@@ -301,7 +318,7 @@ The **CC BY-NC-ND** license includes the following elements:
 - **NC**: Only noncommercial uses of the work are permitted.
 - **ND**: No derivatives or adaptations of the work are allowed.
 
-## 7. 🛠️ Support  <a name="support"></a>
+## 8. 🛠️ Support  <a name="support"></a>
 
 If you have any business questions, encounter technical issues, or need assistance, please don't hesitate to reach out.
 
