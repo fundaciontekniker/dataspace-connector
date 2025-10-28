@@ -332,6 +332,7 @@ If you have any business questions, encounter technical issues, or need assistan
 
 - [Gonzalo Gil](mailto:ggil@tekniker.es):  Data Spaces Team Lead
 - [Nacho Lazaro](mailto:ignacio.lazaro@tekniker.es): Backend Developer
+- [Zuhaitz Ibarbia](mailto:zuhaitz.ibarbia@tekniker.es): Backend Developer
 - [Iker Narbaiza](mailto:iker.narbaiza@tekniker.es): Backend Developer 
 - [Maite Fernandez](mailto:maite.fernandez@tekniker.es): Frontend Developer
 
